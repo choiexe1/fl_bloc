@@ -1,11 +1,16 @@
 import 'package:fl_bloc/blocs/int_bloc_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rxdart/rxdart.dart';
+
+EventTransformer<T> debounce<T>(Duration duration) {
+  return (events, mapper) => events.debounceTime(duration).flatMap(mapper);
+}
 
 class IntBloc extends Bloc<IntBlocEvent, int> {
   IntBloc() : super(0) {
     on<IntIncrement>((event, emit) {
       emit(state + event.amount);
-    });
+    }, transformer: debounce(const Duration(milliseconds: 200)));
 
     on<IntError>((event, emit) {
       addError(Exception('에러 발생!'), StackTrace.current);
