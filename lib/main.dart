@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const App());
+
+  /// [Bloc Observer]는 전역에서 블록들을 리슨함
   Bloc.observer = IntBlocObserver();
 }
 
