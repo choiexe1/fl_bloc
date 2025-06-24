@@ -8,9 +8,12 @@ EventTransformer<T> debounce<T>(Duration duration) {
 
 class IntBloc extends Bloc<IntBlocEvent, int> {
   IntBloc() : super(0) {
-    on<IntIncrement>((event, emit) {
-      emit(state + event.amount);
-    }, transformer: debounce(const Duration(milliseconds: 200)));
+    on<IntIncrement>(
+      (event, emit) {
+        emit(state + event.amount);
+      },
+      // transformer: debounce(const Duration(milliseconds: 200))
+    );
 
     on<IntError>((event, emit) {
       addError(Exception('에러 발생!'), StackTrace.current);

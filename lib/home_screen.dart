@@ -1,6 +1,5 @@
 import 'package:fl_bloc/blocs/int_bloc.dart';
 import 'package:fl_bloc/blocs/int_bloc_event.dart';
-import 'package:fl_bloc/blocs/int_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,6 +39,19 @@ class HomeScreen extends StatelessWidget {
                     child: Text('에러 발생 시키기', style: TextStyle(fontSize: 48)),
                   );
                 },
+              ),
+              BlocListener<IntBloc, int>(
+                listener: (context, state) {
+                  if (state > 10) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('상태가 10을 초과, $state')),
+                    );
+                  }
+                },
+                child: const Text(
+                  '블록 리스너 하위 위젯',
+                  style: TextStyle(fontSize: 24),
+                ),
               ),
             ],
           ),
