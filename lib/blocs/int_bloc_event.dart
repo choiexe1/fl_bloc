@@ -5,3 +5,5 @@ final class IntIncrement extends IntBlocEvent {
 
   final int amount;
 }
+
+final class IntError extends IntBlocEvent {}
