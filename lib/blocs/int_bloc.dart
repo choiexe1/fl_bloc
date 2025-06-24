@@ -23,16 +23,16 @@ class IntBloc extends Bloc<IntBlocEvent, int> {
     print(error);
   }
 
-  @override
-  void onChange(Change<int> change) {
-    super.onChange(change);
-    print(change);
-  }
+  // @override
+  // void onChange(Change<int> change) {
+  //   super.onChange(change);
+  //   print(change);
+  // }
 
-  /// [onTransition]은 [onChange] 호출 이 전에 호출됨
-  @override
-  void onTransition(Transition<IntBlocEvent, int> transition) {
-    super.onTransition(transition);
-    print(transition);
-  }
+  // /// [onTransition]은 [onChange] 호출 이 전에 호출됨
+  // @override
+  // void onTransition(Transition<IntBlocEvent, int> transition) {
+  //   super.onTransition(transition);
+  //   print(transition);
+  // }
 }
